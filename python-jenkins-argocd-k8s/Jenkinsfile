@@ -62,7 +62,7 @@ pipeline {
                             git add deploy.yaml
                             git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
                             git remote -v
-                            git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/suhasdombale123/Jenkins-Zero-To-Hero-Practice.git --set-upstream origin main
+                            git push https://"${GIT_USERNAME}":${GIT_PASSWORD}@github.com/suhasdombale123/Jenkins-Zero-To-Hero-Practice.git --set-upstream origin main
                             '''                        
                         }
                     }
