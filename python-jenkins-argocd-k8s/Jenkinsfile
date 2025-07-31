@@ -55,7 +55,7 @@ pipeline {
                         withCredentials([usernamePassword(credentialsId: 'jenkins_git_cred', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                             sh '''
                             cat deploy.yaml
-                            sed -i "s/\(jenkins-vote-app:\).*/\1${BUILD_NUMBER}/g" deploy.yaml
+                            sed -i "s/\\(jenkins-vote-app:\\).*/\\1${BUILD_NUMBER}/g" deploy.yaml
                             cat deploy.yaml
                             git config --global user.email "suhasdombale123@gmail.com"
                             git config --global user.name "Suhas Dombale"
