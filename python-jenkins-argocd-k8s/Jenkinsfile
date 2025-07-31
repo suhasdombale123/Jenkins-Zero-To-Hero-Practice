@@ -51,7 +51,7 @@ pipeline {
         stage('Update K8S manifest & push to Repo'){
             steps {
                 script{
-                    dir('python-jenkins-argocd-k8s'){
+                    dir('python-jenkins-argocd-k8s/deploy'){
                         withCredentials([usernamePassword(credentialsId: 'jenkins_git_cred', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                             sh '''
                             cat deploy.yaml
