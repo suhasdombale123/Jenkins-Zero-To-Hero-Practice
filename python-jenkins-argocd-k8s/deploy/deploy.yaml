@@ -1,4 +1,4 @@
-apiVersion: apps/17
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: todo-app
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: todo
-        image: suhasdombale123/jenkins-vote-app:17
+        image: suhasdombale123/jenkins-vote-app:45
         ports:
         - containerPort: 8000
