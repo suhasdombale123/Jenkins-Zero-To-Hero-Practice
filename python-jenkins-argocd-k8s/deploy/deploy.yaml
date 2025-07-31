@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: todo
-        image: suhasdombale123/jenkins-vote-app:19
+        image: suhasdombale123/jenkins-vote-app:20
         ports:
         - containerPort: 8000
