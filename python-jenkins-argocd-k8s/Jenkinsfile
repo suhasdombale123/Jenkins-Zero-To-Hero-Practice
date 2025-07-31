@@ -10,7 +10,7 @@ pipeline {
         
         stage('Checkout'){
            steps {
-                git credentialsId: 'f87a34a8-0e09-45e7-b9cf-6dc68feac670', 
+                git credentialsId: 'jenkins_git_cred', 
                 url: 'https://github.com/suhasdombale123/Jenkins-Zero-To-Hero-Practice.git',
                 branch: 'main'
            }
@@ -52,7 +52,7 @@ pipeline {
             steps {
                 script{
                     dir('python-jenkins-argocd-k8s'){
-                        withCredentials([usernamePassword(credentialsId: 'f87a34a8-0e09-45e7-b9cf-6dc68feac670', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                        withCredentials([usernamePassword(credentialsId: 'jenkins_git_cred', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                             sh '''
                             cat deploy.yaml
                             sed -i '' "s/v1/${BUILD_NUMBER}/g" deploy.yaml
