@@ -10,7 +10,14 @@ RUN groupadd -g 1000 jenkins && \
     useradd -m -u 1000 -g jenkins -s /bin/bash jenkins && \
     echo "jenkins ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
+# Create the /app directory
+RUN mkdir -p /app && \
+    chown -R jenkins:jenkins /app
+
+# Switch to jenkins user
 USER jenkins
-WORKDIR /home/jenkins
+
+# Set workdir to /app
+WORKDIR /app
 
 CMD ["bash"]
