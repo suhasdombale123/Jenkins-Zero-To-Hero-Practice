@@ -2,7 +2,8 @@ pipeline {
   agent {
     docker {
       image 'suhasdombale123/jenkins-agent-java17:latest'
-      args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+      // args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+      args '-v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
   stages {
