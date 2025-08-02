@@ -19,6 +19,8 @@ RUN chown -R jenkins:jenkins /home/jenkins
 # Switch to jenkins user
 USER jenkins
 
+CMD ["bash"]
+
 # # Create the /app directory
 # RUN mkdir -p /app && \
 #     chown -R jenkins:jenkins /app
