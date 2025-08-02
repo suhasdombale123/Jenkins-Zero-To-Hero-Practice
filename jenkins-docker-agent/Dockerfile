@@ -2,7 +2,7 @@ FROM maven:3.9.6-eclipse-temurin-17
 
 # Install extra tools (optional for Jenkins use)
 RUN apt-get update && \
-    apt-get install -y git sudo unzip python3-pip && \
+    apt-get install -y git sudo unzip python3-pip coreutils bash curl && \
     rm -rf /var/lib/apt/lists/*
 
 # Create Jenkins user (optional)
