@@ -9,6 +9,8 @@ RUN apk add --no-cache \
     unzip \
     shadow  # for useradd and groupadd
 
+RUN apk add --no-cache docker-cli
+
 # Create Jenkins user
 RUN groupadd -g 119 jenkins && \
     useradd -m -u 114 -g jenkins -s /bin/bash jenkins && \
