@@ -1,34 +1,21 @@
-FROM maven:3.9.6-eclipse-temurin-17
+FROM maven:3.9.6-eclipse-temurin-17-alpine
 
-# Install extra tools (optional for Jenkins use)
-RUN apt-get update && \
-    apt-get install -y git sudo unzip python3-pip coreutils bash curl && \
-    rm -rf /var/lib/apt/lists/*
+# Install dependencies with Alpine's package manager
+RUN apk add --no-cache \
+    git \
+    curl \
+    bash \
+    sudo \
+    unzip \
+    shadow  # for useradd and groupadd
 
-# Create Jenkins user (optional)
-RUN groupadd -g 1000 jenkins && \
-    useradd -m -u 1000 -g jenkins -s /bin/bash jenkins && \
+# Create Jenkins user
+RUN groupadd -g 119 jenkins && \
+    useradd -m -u 114 -g jenkins -s /bin/bash jenkins && \
     echo "jenkins ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Set working directory
+USER jenkins
 WORKDIR /home/jenkins/app
 
-# Change ownership
-RUN chown -R jenkins:jenkins /home/jenkins
-
-# Switch to jenkins user
-USER jenkins
-
 CMD ["bash"]
-
-# # Create the /app directory
-# RUN mkdir -p /app && \
-#     chown -R jenkins:jenkins /app
-
-# # Switch to jenkins user
-# USER jenkins
-
-# # Set workdir to /app
-# WORKDIR /app
-
-# CMD ["bash"]
