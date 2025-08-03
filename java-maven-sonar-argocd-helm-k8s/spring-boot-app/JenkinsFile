@@ -54,6 +54,7 @@ pipeline {
             GIT_USER_NAME = "suhasdombale123"
         }
         steps {
+            checkout scm
             withCredentials([usernamePassword(credentialsId: 'jenkins_git_cred', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                 sh '''
                     git config user.email "suhasdombale123@gmail.com"
